@@ -1,331 +1,365 @@
 namespace SpriteKind {
     export const Attack = SpriteKind.create()
+    export const enemyprojectile = SpriteKind.create()
 }
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite3.setPosition(mySprite.x, mySprite.y)
+    mySprite3.setVelocity(0, -50)
+})
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     mySprite,
     [img`
-        . . . . f f f f f f . . . . . . 
-        . . . f 2 f e e e e f f . . . . 
-        . . f 2 2 2 f e e e e f f . . . 
-        . . f e e e e f f e e e f . . . 
-        . f e 2 2 2 2 e e f f f f . . . 
-        . f 2 e f f f f 2 2 2 e f . . . 
-        . f f f e e e f f f f f f f . . 
-        . f e e 4 4 f b e 4 4 e f f . . 
-        . . f e d d f 1 4 d 4 e e f . . 
-        . . . f d d d d 4 e e e f . . . 
-        . . . f e 4 4 4 e e f f . . . . 
-        . . . f 2 2 2 e d d 4 . . . . . 
-        . . . f 2 2 2 e d d e . . . . . 
-        . . . f 5 5 4 f e e f . . . . . 
-        . . . . f f f f f f . . . . . . 
-        . . . . . . f f f . . . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . f f e e e e f f . . . . 
+        . . . f e e e f f e e e f . . . 
+        . . f f f f f 8 8 f f f f f . . 
+        . . f f e 8 e 8 8 e 8 e f f . . 
+        . . f e 8 f 8 f f 8 f 8 e f . . 
+        . . f f f 8 8 e e 8 8 f f f . . 
+        . f f e f 8 f e e f 8 f e f f . 
+        . f e e f f e e e e f e e e f . 
+        . . f e e e e e e e e e e f . . 
+        . . . f e e e e e e e e f . . . 
+        . . e 4 f f f f f f f f 4 e . . 
+        . . 4 d f 8 8 8 8 8 8 f d 4 . . 
+        . . 4 4 f 4 4 4 4 4 4 f 4 4 . . 
+        . . . . . f f f f f f . . . . . 
+        . . . . . f f . . f f . . . . . 
         `,img`
         . . . . . . . . . . . . . . . . 
-        . . . . f f f f f f . . . . . . 
-        . . . f 2 f e e e e f f . . . . 
-        . . f 2 2 2 f e e e e f f . . . 
-        . . f e e e e f f e e e f . . . 
-        . f e 2 2 2 2 e e f f f f . . . 
-        . f 2 e f f f f 2 2 2 e f . . . 
-        . f f f e e e f f f f f f f . . 
-        . f e e 4 4 f b e 4 4 e f f . . 
-        . . f e d d f 1 4 d 4 e e f . . 
-        . . . f d d d e e e e e f . . . 
-        . . . f e 4 e d d 4 f . . . . . 
-        . . . f 2 2 e d d e f . . . . . 
-        . . f f 5 5 f e e f f f . . . . 
-        . . f f f f f f f f f f . . . . 
-        . . . f f f . . . f f . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . f f e e e e f f . . . . 
+        . . . f e e e f f e e e f . . . 
+        . . . f f f f 8 8 f f f f . . . 
+        . . f f e 8 e 8 8 e 8 e f f . . 
+        . . f e 8 f 8 f f f 8 f e f . . 
+        . . f f f 8 f e e 8 8 f f f . . 
+        . . f e 8 f f e e 8 f e e f . . 
+        . f f e f f e e e f e e e f f . 
+        . f f e e e e e e e e e e f f . 
+        . . . f e e e e e e e e f . . . 
+        . . . e f f f f f f f f 4 e . . 
+        . . . 4 f 8 8 8 8 8 e d d 4 . . 
+        . . . e f f f f f f e e 4 . . . 
+        . . . . f f f . . . . . . . . . 
         `,img`
-        . . . . f f f f f f . . . . . . 
-        . . . f 2 f e e e e f f . . . . 
-        . . f 2 2 2 f e e e e f f . . . 
-        . . f e e e e f f e e e f . . . 
-        . f e 2 2 2 2 e e f f f f . . . 
-        . f 2 e f f f f 2 2 2 e f . . . 
-        . f f f e e e f f f f f f f . . 
-        . f e e 4 4 f b e 4 4 e f f . . 
-        . . f e d d f 1 4 d 4 e e f . . 
-        . . . f d d d d 4 e e e f . . . 
-        . . . f e 4 4 4 e e f f . . . . 
-        . . . f 2 2 2 e d d 4 . . . . . 
-        . . . f 2 2 2 e d d e . . . . . 
-        . . . f 5 5 4 f e e f . . . . . 
-        . . . . f f f f f f . . . . . . 
-        . . . . . . f f f . . . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . f f e e e e f f . . . . 
+        . . . f e e e f f e e e f . . . 
+        . . f f f f f 8 8 f f f f f . . 
+        . . f f e 8 e 8 8 e 8 e f f . . 
+        . . f e 8 f 8 f f 8 f 8 e f . . 
+        . . f f f 8 8 e e 8 8 f f f . . 
+        . f f e f 8 f e e f 8 f e f f . 
+        . f e e f f e e e e f e e e f . 
+        . . f e e e e e e e e e e f . . 
+        . . . f e e e e e e e e f . . . 
+        . . e 4 f f f f f f f f 4 e . . 
+        . . 4 d f 8 8 8 8 8 8 f d 4 . . 
+        . . 4 4 f 4 4 4 4 4 4 f 4 4 . . 
+        . . . . . f f f f f f . . . . . 
+        . . . . . f f . . f f . . . . . 
         `,img`
         . . . . . . . . . . . . . . . . 
-        . . . . f f f f f f . . . . . . 
-        . . . f 2 f e e e e f f . . . . 
-        . . f 2 2 2 f e e e e f f . . . 
-        . . f e e e e f f e e e f . . . 
-        . f e 2 2 2 2 e e f f f f . . . 
-        . f 2 e f f f f 2 2 2 e f . . . 
-        . f f f e e e f f f f f f f . . 
-        . f e e 4 4 f b e 4 4 e f f . . 
-        . . f e d d f 1 4 d 4 e e f . . 
-        . . . f d d d d 4 e e e f . . . 
-        . . . f e 4 4 4 e d d 4 . . . . 
-        . . . f 2 2 2 2 e d d e . . . . 
-        . . f f 5 5 4 4 f e e f . . . . 
-        . . f f f f f f f f f f . . . . 
-        . . . f f f . . . f f . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . f f e e e e f f . . . . 
+        . . . f e e e f f e e e f . . . 
+        . . . f f f f 8 8 f f f f . . . 
+        . . f f e 8 e 8 8 e 8 e f f . . 
+        . . f e f 8 f f f 8 f 8 e f . . 
+        . . f f f 8 8 e e f 8 f f f . . 
+        . . f e e f 8 e e f f 8 e f . . 
+        . f f e e e f e e e f f e f f . 
+        . f f e e e e e e e e e e f f . 
+        . . . f e e e e e e e e f . . . 
+        . . e 4 f f f f f f f f e . . . 
+        . . 4 d d e 8 8 8 8 8 f 4 . . . 
+        . . . 4 e e f f f f f f e . . . 
+        . . . . . . . . . f f f . . . . 
         `],
-    100,
+    200,
     false
     )
     mySprite.vx = -100
 })
-controller.combos.attachCombo(controller.combos.idToString(controller.combos.ID.up), function () {
-    animation.runImageAnimation(
-    mySprite,
-    [img`
-        ........................
-        .....ffff...............
-        ...fff22fff.............
-        ..fff2222fff............
-        .fffeeeeeefff...........
-        .ffe222222eef...........
-        .fe2ffffff2ef...........
-        .ffffeeeeffff...........
-        ffefbf44fbfeff..........
-        fee41fddf14eef..........
-        .ffffdddddeef...........
-        fddddf444eef............
-        fbbbbf2222f4e...........
-        fbbbbf2222fd4...........
-        .fccf45544f44...........
-        ..ffffffff..............
-        ....ff..ff..............
-        ........................
-        ........................
-        ........................
-        ........................
-        ........................
-        ........................
-        ........................
-        `,img`
-        ........................
-        ......ffff..............
-        ....fff22fff............
-        ...fff2222fff...........
-        ..fffeeeeeefff..........
-        ..ffe222222eef..........
-        ..fe2ffffff2ef..........
-        ..ffffeeeeffff..........
-        .ffefbf44fbfeff.........
-        .fee41fddf14eef.........
-        fdfeeddddd4eff..........
-        fbffee444edd4e..........
-        fbf4f2222edde...........
-        fcf.f22cccee............
-        .ff.f44cdc4f............
-        ....fffddcff............
-        .....fddcff.............
-        ....cddc................
-        ....cdc.5...............
-        ....cc..55..............
-        .........5..............
-        ........................
-        ........................
-        ........................
-        `,img`
-        ........................
-        ........................
-        .......ff...............
-        .....ff22ff.............
-        ...fff2222fff...........
-        ..fff222222fff..........
-        ..fff222222fff..........
-        ..feeeeeeeeeeff.........
-        .ffe22222222eff.........
-        .fffffeeeefffff.........
-        fdfefbf44fbfeff.........
-        fbfe41fddf14ef..........
-        fbffe4dddd4efe..........
-        fcfef22222f4e...........
-        .ff4f44554f4e...........
-        ....ffffffdde...........
-        .....ffffedde...5.......
-        ..........ee...55.......
-        .........ccc...5........
-        ........cc1cc...........
-        .....55..c1c............
-        ....55...c1c..5.........
-        .........c1c..55........
-        .........c1c...5........
-        `,img`
-        ......ffff..............
-        ....fff22fff............
-        ...fff2222fff.......55..
-        ..fffeeeeeefff.......55.
-        ..ffe222222eef....5.....
-        ..fe2ffffff2ef...55.....
-        ..ffffeeeeffff...5..ccc.
-        .ffefbf44fbfeff....cddc.
-        .ffefbf44fbfeff...cddc..
-        .fee4dddddd4eef.ccddc...
-        fdfeeddddd4eeffecddc....
-        fbffee4444ee4fddccc.....
-        fbf4f222222f1edde...55..
-        fcf.f222222f44ee..5..55.
-        .ff.f445544f.....55.....
-        ....ffffffff.....5......
-        .....ff..ff.............
-        ........................
-        ........................
-        ........................
-        ........................
-        ........................
-        ........................
-        ........................
-        `],
-    500,
-    false
-    )
-    statusbar2.value += -40
+controller.right.onEvent(ControllerButtonEvent.Released, function () {
+    mySprite.vx = 0
+})
+controller.left.onEvent(ControllerButtonEvent.Released, function () {
+    mySprite.vx = 0
 })
 statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
-    sprites.destroy(mySprite2)
+    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+})
+statusbars.onZero(StatusBarKind.Health, function (status) {
+    sprites.destroyAllSpritesOfKind(SpriteKind.Player, effects.ashes, 500)
+    game.gameOver(false)
+    game.setGameOverEffect(false, effects.none)
+    sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     mySprite,
     [img`
-        . . . . . . f f f f f f . . . . 
-        . . . . f f e e e e f 2 f . . . 
-        . . . f f e e e e f 2 2 2 f . . 
-        . . . f e e e f f e e e e f . . 
-        . . . f f f f e e 2 2 2 2 e f . 
-        . . . f e 2 2 2 f f f f e 2 f . 
-        . . f f f f f f f e e e f f f . 
-        . . f f e 4 4 e b f 4 4 e e f . 
-        . . f e e 4 d 4 1 f d d e f . . 
-        . . . f e e e 4 d d d d f . . . 
-        . . . . f f e e 4 4 4 e f . . . 
-        . . . . . 4 d d e 2 2 2 f . . . 
-        . . . . . e d d e 2 2 2 f . . . 
-        . . . . . f e e f 4 5 5 f . . . 
-        . . . . . . f f f f f f . . . . 
-        . . . . . . . f f f . . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . f f e e e e f f . . . . 
+        . . . f e e e f f e e e f . . . 
+        . . f f f f f 8 8 f f f f f . . 
+        . . f f e 8 e 8 8 e 8 e f f . . 
+        . . f e 8 f 8 f f 8 f 8 e f . . 
+        . . f f f 8 8 e e 8 8 f f f . . 
+        . f f e f 8 f e e f 8 f e f f . 
+        . f e e f f e e e e f e e e f . 
+        . . f e e e e e e e e e e f . . 
+        . . . f e e e e e e e e f . . . 
+        . . e 4 f f f f f f f f 4 e . . 
+        . . 4 d f 8 8 8 8 8 8 f d 4 . . 
+        . . 4 4 f 4 4 4 4 4 4 f 4 4 . . 
+        . . . . . f f f f f f . . . . . 
+        . . . . . f f . . f f . . . . . 
         `,img`
         . . . . . . . . . . . . . . . . 
-        . . . . . . f f f f f f . . . . 
-        . . . . f f e e e e f 2 f . . . 
-        . . . f f e e e e f 2 2 2 f . . 
-        . . . f e e e f f e e e e f . . 
-        . . . f f f f e e 2 2 2 2 e f . 
-        . . . f e 2 2 2 f f f f e 2 f . 
-        . . f f f f f f f e e e f f f . 
-        . . f f e 4 4 e b f 4 4 e e f . 
-        . . f e e 4 d 4 1 f d d e f . . 
-        . . . f e e e e e d d d f . . . 
-        . . . . . f 4 d d e 4 e f . . . 
-        . . . . . f e d d e 2 2 f . . . 
-        . . . . f f f e e f 5 5 f f . . 
-        . . . . f f f f f f f f f f . . 
-        . . . . . f f . . . f f f . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . f f e e e e f f . . . . 
+        . . . f e e e f f e e e f . . . 
+        . . . f f f f 8 8 f f f f . . . 
+        . . f f e 8 e 8 8 e 8 e f f . . 
+        . . f e 8 f 8 f f f 8 f e f . . 
+        . . f f f 8 f e e 8 8 f f f . . 
+        . . f e 8 f f e e 8 f e e f . . 
+        . f f e f f e e e f e e e f f . 
+        . f f e e e e e e e e e e f f . 
+        . . . f e e e e e e e e f . . . 
+        . . . e f f f f f f f f 4 e . . 
+        . . . 4 f 8 8 8 8 8 e d d 4 . . 
+        . . . e f f f f f f e e 4 . . . 
+        . . . . f f f . . . . . . . . . 
         `,img`
-        . . . . . . f f f f f f . . . . 
-        . . . . f f e e e e f 2 f . . . 
-        . . . f f e e e e f 2 2 2 f . . 
-        . . . f e e e f f e e e e f . . 
-        . . . f f f f e e 2 2 2 2 e f . 
-        . . . f e 2 2 2 f f f f e 2 f . 
-        . . f f f f f f f e e e f f f . 
-        . . f f e 4 4 e b f 4 4 e e f . 
-        . . f e e 4 d 4 1 f d d e f . . 
-        . . . f e e e 4 d d d d f . . . 
-        . . . . f f e e 4 4 4 e f . . . 
-        . . . . . 4 d d e 2 2 2 f . . . 
-        . . . . . e d d e 2 2 2 f . . . 
-        . . . . . f e e f 4 5 5 f . . . 
-        . . . . . . f f f f f f . . . . 
-        . . . . . . . f f f . . . . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . f f e e e e f f . . . . 
+        . . . f e e e f f e e e f . . . 
+        . . f f f f f 8 8 f f f f f . . 
+        . . f f e 8 e 8 8 e 8 e f f . . 
+        . . f e 8 f 8 f f 8 f 8 e f . . 
+        . . f f f 8 8 e e 8 8 f f f . . 
+        . f f e f 8 f e e f 8 f e f f . 
+        . f e e f f e e e e f e e e f . 
+        . . f e e e e e e e e e e f . . 
+        . . . f e e e e e e e e f . . . 
+        . . e 4 f f f f f f f f 4 e . . 
+        . . 4 d f 8 8 8 8 8 8 f d 4 . . 
+        . . 4 4 f 4 4 4 4 4 4 f 4 4 . . 
+        . . . . . f f f f f f . . . . . 
+        . . . . . f f . . f f . . . . . 
         `,img`
         . . . . . . . . . . . . . . . . 
-        . . . . . . f f f f f f . . . . 
-        . . . . f f e e e e f 2 f . . . 
-        . . . f f e e e e f 2 2 2 f . . 
-        . . . f e e e f f e e e e f . . 
-        . . . f f f f e e 2 2 2 2 e f . 
-        . . . f e 2 2 2 f f f f e 2 f . 
-        . . f f f f f f f e e e f f f . 
-        . . f f e 4 4 e b f 4 4 e e f . 
-        . . f e e 4 d 4 1 f d d e f . . 
-        . . . f e e e 4 d d d d f . . . 
-        . . . . 4 d d e 4 4 4 e f . . . 
-        . . . . e d d e 2 2 2 2 f . . . 
-        . . . . f e e f 4 4 5 5 f f . . 
-        . . . . f f f f f f f f f f . . 
-        . . . . . f f . . . f f f . . . 
+        . . . . . . f f f f . . . . . . 
+        . . . . f f e e e e f f . . . . 
+        . . . f e e e f f e e e f . . . 
+        . . . f f f f 8 8 f f f f . . . 
+        . . f f e 8 e 8 8 e 8 e f f . . 
+        . . f e f 8 f f f 8 f 8 e f . . 
+        . . f f f 8 8 e e f 8 f f f . . 
+        . . f e e f 8 e e f f 8 e f . . 
+        . f f e e e f e e e f f e f f . 
+        . f f e e e e e e e e e e f f . 
+        . . . f e e e e e e e e f . . . 
+        . . e 4 f f f f f f f f e . . . 
+        . . 4 d d e 8 8 8 8 8 f 4 . . . 
+        . . . 4 e e f f f f f f e . . . 
+        . . . . . . . . . f f f . . . . 
         `],
-    500,
+    200,
     false
     )
     mySprite.vx = 100
 })
-controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
-    statusbar2.value += -20
+controller.A.onEvent(ControllerButtonEvent.Released, function () {
+    mySprite3.setPosition(mySprite.x, mySprite.y)
+})
+scene.onHitWall(SpriteKind.enemyprojectile, function (sprite, location) {
+    sprites.destroy(mySprite4)
+})
+sprites.onDestroyed(SpriteKind.enemyprojectile, function (sprite) {
+    mySprite4 = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . 2 f f f 2 . . . . . 
+        . . . . . . 2 f f f 2 . . . . . 
+        . . . . . . 2 f f f 2 . . . . . 
+        . . . . . . 2 f f f 2 . . . . . 
+        . . . . . . 2 f f f 2 . . . . . 
+        . . . . . . c f f f c . . . . . 
+        . . . . . 2 c f f f c 2 . . . . 
+        . . . . . 2 f f f f f 2 . . . . 
+        . . . . . 2 f f f f f c . . . . 
+        . . . . . c f f f f f c . . . . 
+        . . . . . c f f f f f c . . . . 
+        . . . . . c f f f f f c . . . . 
+        . . . . . 2 c f f f c 2 . . . . 
+        . . . . . . 2 2 2 2 2 . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.enemyprojectile)
+    mySprite4.setPosition(mySprite2.x, mySprite2.y)
+    pause(200)
+    mySprite4.setVelocity(0, 50)
+})
+sprites.onOverlap(SpriteKind.enemyprojectile, SpriteKind.Player, function (sprite, otherSprite) {
+    statusbar.value += -25
+    sprites.destroy(mySprite4)
+})
+/**
+ * Work on the few glitches left and add more detailing to sprites and add other things to make it better
+ */
+sprites.onDestroyed(SpriteKind.Projectile, function (sprite) {
+    mySprite3 = sprites.create(img`
+        . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . 
+        . . . . . . . f . . . . . . . 
+        . . . . . . f f f . . . . . . 
+        . . . . . . f f f . . . . . . 
+        . . . . . . 5 4 5 . . . . . . 
+        . . . . . . 5 4 5 . . . . . . 
+        . . . . . . 5 4 5 . . . . . . 
+        . . . . . . 5 4 5 . . . . . . 
+        . . . . . . 5 4 5 . . . . . . 
+        . . . . . . 5 4 5 . . . . . . 
+        . . . . . . 5 4 5 . . . . . . 
+        . . . . . . 3 3 3 . . . . . . 
+        . . . . . . 3 3 3 . . . . . . 
+        . . . . . . . . . . . . . . . 
+        `, SpriteKind.Projectile)
+    mySprite3.setPosition(mySprite.x, mySprite.y)
+    pauseUntil(() => controller.A.isPressed())
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    statusbar2.value += -5
+    sprites.destroy(mySprite3)
 })
 let statusbar2: StatusBarSprite = null
+let statusbar: StatusBarSprite = null
+let mySprite4: Sprite = null
 let mySprite2: Sprite = null
+let mySprite3: Sprite = null
 let mySprite: Sprite = null
+tiles.setCurrentTilemap(tilemap`level1`)
 mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . f f f f f f . . . . . 
-    . . . . f 2 f e e e e f f . . . 
-    . . . f 2 2 2 f e e e e f f . . 
+    . . . . f 8 f e e e e f f . . . 
+    . . . f 8 8 8 f e e e e f f . . 
     . . . f e e e e f f e e e f . . 
-    . . f e 2 2 2 2 e e f f f f . . 
-    . . f 2 e f f f f 2 2 2 e f . . 
+    . . f e 8 8 8 8 e e f f f f . . 
+    . . f 8 e f f f f 8 8 8 e f . . 
     . . f f f e e e f f f f f f f . 
     . . f e e 4 4 f b e 4 4 e f f . 
     . . . f e d d f 1 4 d 4 e e f . 
     . . . . f d d d e e e e e f . . 
     . . . . f e 4 e d d 4 f . . . . 
-    . . . . f 2 2 e d d e f . . . . 
+    . . . . f 8 8 e d d e f . . . . 
     . . . f f 5 5 f e e f f f . . . 
     . . . f f f f f f f f f f . . . 
     . . . . f f f . . . f f . . . . 
     `, SpriteKind.Player)
+mySprite3 = sprites.create(img`
+    . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . 
+    . . . . . . . f . . . . . . . 
+    . . . . . . f f f . . . . . . 
+    . . . . . . f f f . . . . . . 
+    . . . . . . 5 4 5 . . . . . . 
+    . . . . . . 5 4 5 . . . . . . 
+    . . . . . . 5 4 5 . . . . . . 
+    . . . . . . 5 4 5 . . . . . . 
+    . . . . . . 5 4 5 . . . . . . 
+    . . . . . . 5 4 5 . . . . . . 
+    . . . . . . 5 4 5 . . . . . . 
+    . . . . . . 3 3 3 . . . . . . 
+    . . . . . . 3 3 3 . . . . . . 
+    . . . . . . . . . . . . . . . 
+    `, SpriteKind.Projectile)
+mySprite3.setPosition(mySprite.x, mySprite.y)
 mySprite2 = sprites.create(img`
     ........................
     ........................
     ........................
     ........................
-    .........fffff..........
-    ........f11111ff........
+    ..........ffff..........
+    ........ff1111ff........
     .......fb111111bf.......
-    .......f1111111dbf......
-    ......fd111111dddf......
-    ......fd11111ddddf......
-    ......fd11dddddddf......
-    ......f111dddddddf......
-    ......f11fcddddddf......
-    .....fb1111bdddbf.......
-    .....f1b1bdfcfff........
-    .....fbfbffffffff.......
-    ......fffffffffff.ff....
-    ...........ffffffff.....
-    ........f1b1bffffff.....
-    ........fbfbffffff......
+    .......f11111111f.......
+    ......fd11111111df......
+    ......fd11111111df......
+    ......fddd1111dddf......
+    ......fbdbfddfbdbf......
+    ......fcdcf11fcdcf......
+    .......fb111111bf.......
+    ......fffcdb1bdffff.....
+    ....fc111cbfbfc111cf....
+    ....f1b1b1ffff1b1b1f....
+    ....fbfbffffffbfbfbf....
+    .........ffffff.........
+    ...........fff..........
     ........................
     ........................
     ........................
     ........................
-    `, SpriteKind.Player)
-let statusbar = statusbars.create(20, 4, StatusBarKind.EnemyHealth)
+    `, SpriteKind.Enemy)
+mySprite4 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . 2 f f f 2 . . . . . 
+    . . . . . . 2 f f f 2 . . . . . 
+    . . . . . . 2 f f f 2 . . . . . 
+    . . . . . . 2 f f f 2 . . . . . 
+    . . . . . . 2 f f f 2 . . . . . 
+    . . . . . . c f f f c . . . . . 
+    . . . . . 2 c f f f c 2 . . . . 
+    . . . . . 2 f f f f f 2 . . . . 
+    . . . . . 2 f f f f f c . . . . 
+    . . . . . c f f f f f c . . . . 
+    . . . . . c f f f f f c . . . . 
+    . . . . . c f f f f f c . . . . 
+    . . . . . 2 c f f f c 2 . . . . 
+    . . . . . . 2 2 2 2 2 . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.enemyprojectile)
+mySprite4.setPosition(mySprite2.x, mySprite2.y)
+mySprite4.setVelocity(0, 50)
+mySprite2.y += 0
+statusbar = statusbars.create(25, 4, StatusBarKind.Health)
 statusbar.attachToSprite(mySprite)
 statusbar.setLabel("HP")
 statusbar.positionDirection(CollisionDirection.Top)
-mySprite.x = 5
+statusbar2 = statusbars.create(80, 4, StatusBarKind.EnemyHealth)
+statusbar2.attachToSprite(mySprite2)
+mySprite.y = 99
 scene.cameraFollowSprite(mySprite)
 forever(function () {
-    if (mySprite.overlapsWith(mySprite2)) {
-        statusbar2 = statusbars.create(20, 4, StatusBarKind.Health)
-        statusbar2.attachToSprite(mySprite2)
+	
+})
+forever(function () {
+    if (statusbar2.value == 0) {
+        mySprite4.setImage(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)
+        sprites.destroy(mySprite4)
     }
+})
+game.onUpdateInterval(500, function () {
+	
 })

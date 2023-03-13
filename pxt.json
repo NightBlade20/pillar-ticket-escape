@@ -1,5 +1,5 @@
 {
-    "name": "Pillar Ticket Escape",
+    "name": "Pillar Ticket Escape - Copy",
     "description": "",
     "dependencies": {
         "device": "*",
@@ -20,7 +20,7 @@
         "test.ts"
     ],
     "targetVersions": {
-        "target": "1.12.24",
+        "target": "1.12.25",
         "targetId": "arcade"
     },
     "supportedTargets": [
