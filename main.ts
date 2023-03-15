@@ -3,12 +3,12 @@ namespace SpriteKind {
     export const enemyprojectile = SpriteKind.create()
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite3.setPosition(mySprite.x, mySprite.y)
+    mySprite3.setPosition(mysprite55.x, mysprite55.y)
     mySprite3.setVelocity(0, -50)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-    mySprite,
+    mysprite55,
     [img`
         . . . . . . f f f f . . . . . . 
         . . . . f f e e e e f f . . . . 
@@ -81,13 +81,13 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     200,
     false
     )
-    mySprite.vx = -100
+    mysprite55.vx = -100
 })
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
-    mySprite.vx = 0
+    mysprite55.vx = 0
 })
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
-    mySprite.vx = 0
+    mysprite55.vx = 0
 })
 statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
     sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
@@ -101,7 +101,7 @@ statusbars.onZero(StatusBarKind.Health, function (status) {
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-    mySprite,
+    mysprite55,
     [img`
         . . . . . . f f f f . . . . . . 
         . . . . f f e e e e f f . . . . 
@@ -174,11 +174,11 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     200,
     false
     )
-    mySprite.vx = 100
+    mysprite55.vx = 100
 })
 controller.A.onEvent(ControllerButtonEvent.Released, function () {
     pauseUntil(() => controller.A.isPressed())
-    mySprite3.setPosition(mySprite.x, mySprite.y)
+    mySprite3.setPosition(mysprite55.x, mysprite55.y)
 })
 scene.onHitWall(SpriteKind.enemyprojectile, function (sprite, location) {
     sprites.destroy(mySprite4)
@@ -202,7 +202,7 @@ sprites.onDestroyed(SpriteKind.enemyprojectile, function (sprite) {
         . . . . . . 2 2 2 2 2 . . . . . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.enemyprojectile)
-    mySprite4.setPosition(mySprite2.x, mySprite2.y)
+    mySprite4.setPosition(Myenemy.x, Myenemy.y)
     pause(200)
     mySprite4.setVelocity(0, 50)
 })
@@ -210,9 +210,7 @@ sprites.onOverlap(SpriteKind.enemyprojectile, SpriteKind.Player, function (sprit
     statusbar.value += -25
     sprites.destroy(mySprite4)
 })
-/**
- * Work on the few glitches left and add more detailing to sprites and add other things to make it better
- */
+// Work on the few glitches left and add more detailing to sprites and add other things to make it better
 sprites.onDestroyed(SpriteKind.Projectile, function (sprite) {
     pauseUntil(() => controller.A.isPressed())
     mySprite3 = sprites.create(img`
@@ -232,7 +230,7 @@ sprites.onDestroyed(SpriteKind.Projectile, function (sprite) {
         . . . . . . 3 3 3 . . . . . . 
         . . . . . . . . . . . . . . . 
         `, SpriteKind.Projectile)
-    mySprite3.setPosition(mySprite.x, mySprite.y)
+    mySprite3.setPosition(mysprite55.x, mysprite55.y)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     statusbar2.value += -5
@@ -241,11 +239,11 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
 let statusbar2: StatusBarSprite = null
 let statusbar: StatusBarSprite = null
 let mySprite4: Sprite = null
-let mySprite2: Sprite = null
+let Myenemy: Sprite = null
 let mySprite3: Sprite = null
-let mySprite: Sprite = null
+let mysprite55: Sprite = null
 tiles.setCurrentTilemap(tilemap`level1`)
-mySprite = sprites.create(img`
+mysprite55 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . f f f f f f . . . . . 
     . . . . f 8 f e e e e f f . . . 
@@ -280,8 +278,8 @@ mySprite3 = sprites.create(img`
     . . . . . . 3 3 3 . . . . . . 
     . . . . . . . . . . . . . . . 
     `, SpriteKind.Projectile)
-mySprite3.setPosition(mySprite.x, mySprite.y)
-mySprite2 = sprites.create(img`
+mySprite3.setPosition(mysprite55.x, mysprite55.y)
+Myenemy = sprites.create(img`
     . . . . f f f f . . . . 
     . . f f a a a a f f . . 
     . f f a a a a a a f f . 
@@ -317,17 +315,17 @@ mySprite4 = sprites.create(img`
     . . . . . . 2 2 2 2 2 . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.enemyprojectile)
-mySprite4.setPosition(mySprite2.x, mySprite2.y)
+mySprite4.setPosition(Myenemy.x, Myenemy.y)
 mySprite4.setVelocity(0, 50)
-mySprite2.y += 0
+Myenemy.y += 0
 statusbar = statusbars.create(25, 4, StatusBarKind.Health)
-statusbar.attachToSprite(mySprite)
+statusbar.attachToSprite(mysprite55)
 statusbar.setLabel("HP")
 statusbar.positionDirection(CollisionDirection.Top)
 statusbar2 = statusbars.create(80, 4, StatusBarKind.EnemyHealth)
-statusbar2.attachToSprite(mySprite2)
-mySprite.y = 99
-scene.cameraFollowSprite(mySprite)
+statusbar2.attachToSprite(Myenemy)
+mysprite55.y = 99
+scene.cameraFollowSprite(mysprite55)
 game.showLongText("The Principal is seeking to destroy you!", DialogLayout.Bottom)
 game.showLongText("Dodge his projectiles and avoid certain doom", DialogLayout.Bottom)
 game.showLongText("Show your leadership and banish the Evil principal!", DialogLayout.Bottom)
